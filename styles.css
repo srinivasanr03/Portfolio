@@ -1,0 +1,789 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+:root{
+    --bgorange:#e84949;
+}
+
+#wrapper{
+    height:100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* perspective:10px; */
+    scroll-behavior: smooth;
+}
+
+.container{
+    width:1200px;
+    margin:0 auto;
+    
+}
+
+.nav-bar{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;   /* This is used to make the items of the nav-bar to be at the center of the div nav-bar , if not done then the elements of the nav-bar will be at the top of the div nav-bar*/
+
+    padding-top:1rem;
+}
+
+.logo-j{
+    width:80px;
+}
+
+.logo-name{
+    display:flex;
+    /* justify-content:baseline; [This is an invalid property because it has no effect on the applied , no need to use this property but LOVE BABBAR made use of it] */
+    align-items:center;
+}
+
+.logo-text{
+    margin-left:-1.45rem;
+    font-size:20px;
+}
+
+.nav-items{
+    display:flex;
+    gap:2rem;
+    padding:0 4em;
+
+    /* text-decoration: none; [cannot place here also]*/
+    
+}
+
+.nav-items>div{
+    font-size:20px;
+    font-weight:500;
+    cursor:pointer;
+    /* text-decoration: none;  [could have used it but it should be like .nav-items>div>a then only it works because we have to do specific targetting */
+}
+
+.nav-items>div>a{
+    color:black;
+}
+
+a{
+    text-decoration: none;     /* Underlining of the word is due to the anchord tag default text-decoration property , so if we dont't want the text-decoration property then we should point to the anchor tag (either directly or indirectly like .nav-items>div>a for specific anchor tag targetting) and mention text-decoration:none; for removing underlining */
+}
+
+.nav-items>div:hover{
+    /* transition-duration: 6s;
+    transition-timing-function: ease; [Even with these properties also we were not able to achieve smooth transition of .nav-items>div elements to get font-weight as bold on hovering the issue is with font-style*/
+    transition:all 0.2s ease-out;
+    font-weight:bold;
+}
+
+.hero-section{
+    position:relative;
+    display:flex;
+    justify-content:center;   /* these are required to so that the contents placed at the top of the hero-section div will be placed at the center of the hero-section div */
+    align-items:center;
+
+    gap: 5rem;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    padding-bottom: 8rem;
+}
+
+.faded-text{
+    user-select: none;
+    font-size:7em;
+    color:rgb(231,231,231);
+    /* position:absolute;
+    bottom:0%;
+    left:0%; */
+
+    position:absolute;
+    bottom:-16%;
+    left:-5%;
+    font-weight:bold;
+    transition:all 3s;
+
+}
+
+.hero-section-left{
+    display:flex;
+    flex-direction:column;  /* adding display:flex and flex-direction as column would not have any effect from the original , this is added because the contents of the hero-section-left is placed one after the other line by line which is achived by display:flex; and flex-direction:column; [even thought there is no viusual effect of this but to increase specificity we use it */
+    justify-content:center;
+    gap:2rem;
+}
+
+.hero-section-heading{
+    font-size:35px;
+    color:#343d68;
+    font-weight:500;
+}
+
+.role{
+    color:#4e45d5;
+    font-weight:800;
+}
+
+.hero-section-subheading{
+    font-size: 45px;
+    line-height: 45px;
+}
+
+.hero-section-description{
+    margin-top: 1rem;
+    width:70%;
+    font-weight: 500;
+}
+  
+  .btn-pink {
+    background-color: #e84949;
+    width: fit-content;
+    color: white;
+    padding: 0.8rem 2.3rem;
+    box-shadow: 5px 5px 7px 0px #0000003f;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+  .btn-pink::before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    
+    top: 0;
+    left : 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s;
+  }
+  .btn-pink:hover::before {
+    transform: scaleX(1);
+  }
+  .btn-pink:hover {
+    color: black;
+    /* border:0.5px solid black; */
+  }
+
+  
+  .hero-section-right{
+    position:relative;
+  }
+
+  .absolute{
+    position:absolute;    /* Actually also the effect we get is also as position:absolute but still LOVE BABBAR added so that our logic remains same Without using this also we could have placed the images as absolute and i don't know how */
+  }
+
+  .user-image{
+    padding:2.5rem;
+    filter:grayscale(1);
+    transition:all 1s;
+    animation:scaleImage 5s linear infinite;
+  }
+
+    /* On user image all other symbols are overlapped or we can say placed so in order to achieve it we can make user image z-index as -1 [but using positionelative and absolute can we do] */
+
+    .user-image>img{
+        z-index:-9;
+    }
+
+    @keyframes scaleImage{
+        0%{
+            filter: grayscale(1);
+            transform:scale(1);
+        }
+        50%{
+            transform:scale(1.1);
+            filter:grayscale(0);
+            box-shadow: 3px 3px 10px black;
+        }
+        100%{
+            transform:scale(1);
+            filter: grayscale(1);
+        }
+    }
+
+    .icon-dots{
+        z-index: 9;
+        bottom:-1rem;
+        right:0;
+        animation-name:dotsAnimation;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+    }
+    @keyframes dotsAnimation {
+        0%{
+            transform: translateY(0px);
+        }
+        50%{
+            transform: translateY(-15px);
+        }
+        100%{
+            transform: translateY(0px);
+        }
+    }
+
+
+    /* We can see that we have used 3 points in the animation this is because we are responsible for the complete animation of the objrct i.e, [starting] then [coming to front] then [going back] also this is like one cycle so we gave each and every information */
+
+    .icon-cube{
+        z-index: 9;
+        top:-0.8em;
+        right:1em;
+        animation-name:cubeAnimation;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        /* transform-style: preserve-3d; */
+    }
+    @keyframes cubeAnimation {
+        0%{
+            transform: rotateY(0deg) translateY(0px);
+        }
+        50%{
+            transform: rotateY(180deg) translateY(-15px);
+        }
+        100%{
+            transform: rotateY(360deg) translateY(0px);
+        }
+    }
+
+    /* When e obseve circle we can see that it is moving form one place to another place [ so we can achieve that using transfrom:translate] or [without translating also we can acheive this by marking two positions as source and destination and saying that move from this place to this place] */
+
+    .icon-circle{
+        z-index:9;
+        bottom:0;
+        animation-name:shakeEffectCircle;
+        animation-duration: 5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    @keyframes shakeEffectCircle {
+        0%{
+            left:0%;
+            bottom:0%;
+        }
+        50%{
+            left:5%;
+            bottom:10%;
+        }
+        100%{
+            left:0%;
+            bottom:0%;
+        }
+
+        /* Here without 0% and 100% points also the same effect is obtained */
+
+    }
+
+    .icon-zigzag{
+        z-index: 9;
+        top:1.5rem;
+        left:-0.3rem;
+        animation: zigzagAnimation 5s ease-in infinite;
+    }
+    @keyframes zigzagAnimation {
+        50%{
+            left:5%;
+            top:2%;
+        }
+    }
+
+    .icon-plus{
+        z-index: 9;
+        top:-0.8rem;
+        left:50%;
+        animation: shakeEffectPlus 5s ease-in infinite;
+    }
+    @keyframes shakeEffectPlus {
+        50%{
+            left:48%;
+            top:3%;
+        }
+    }
+
+
+    /* Projects - Section */
+
+    .project-section{
+
+        background-color:rgb(231,231,231);
+        margin-top:4rem;
+
+    }
+
+    .page-header{
+        color:var(--bgorange);
+        font-size:90px;
+        text-align:center;
+        padding-top:30px;
+    }
+
+    .project-container{
+        max-width:1200px;
+        border-radius: 20px;
+        margin:0 auto;
+        padding:3rem 0;
+
+        display:flex;
+        flex-direction: column;
+        gap:120px;
+        
+    }
+
+    .project-card{
+        border-radius: 20px;
+        width:90%;
+        height:550px;
+        background-image: url(images/projects/Project1.png);
+        background-size: cover;
+        /* background-repeat: no-repeat;  [ This is not required now , n=but if the image used is small then it tensds to repeat the entire container inorder to fill , to avoid this we make use og=f background-repeat:no-repeat ] */
+        position:relative;
+        box-shadow: 0px 0px 35px #1f1f1f;
+        
+    }
+
+    .project-card::after{
+        border-radius: 20px;
+        z-index:0;
+        content: "";
+        position:absolute;
+        /* The ::after's position is made absolute because we can see that the ::after--->having tint is over our project-image so inorder to make it overlap onto our project-card we make position:absolute; */
+        left:0%;
+        right:0%;
+        top:0%;
+        bottom:0%;
+        /* The above left,right,top,bottom property is set to 0% because inorder to make the ::after to be covering the entire container in which it is contained [ here it is made to contain .project-card */
+        background-color:#1f1f1f7a;
+        /* 7a is the opacity value */
+        transform:scaleX(1);
+        /* scaleX() value is set to 1 has no effect at all this indicates actual scale or default as it is that we can see , it is added so that we can increase the size on hovering keeping scaleX(1) as default on hovering we can make it increaase relatively i.e, we will use scaleX(1.1) [Maybe] */
+    }
+
+    .project-card::before{
+
+        /* Before adding z-index to ::before and ::after the blue shade that we intended to get was somewhat balckish this is because the ::before containing black tint on the background image and ::after containing blue tint was on the same layer so as a mixture of colour we were getting blackish tint so when we layer them using z-index the blue tint appears as expected */
+
+        z-index:4;
+        border-radius: 20px;
+        content: "";
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        /* we can observe that the blue shade is also overlapping on the backgreound image or we can say that it is overlapping on .project-card so inorder to overlap it we use position:absolute; and to make it cover entire .project-card we set left,right,top,bottom as 0*/
+
+        background: linear-gradient(45deg, #343d68, #343d68be, #343d687c);
+        transform:scaleX(0);
+
+        /* we are saying that scaleX(0) is scaling when above specified conditions are given , so when we do hover we are specifying that sclaeX(1) means when we do hovering relatively scaling takes place */
+
+        transform-origin:left;
+        transition: background 0.4s;
+        transition: transform 0.4s;
+        /* transition: transform-origin 0.4s ease; */
+
+        /* We basically want a blue tint we specified it using linear-gradient after thsi we want it be covering the entire .project-card and so we have done left,top bottom,right as 0 , next we want it to be covering .project-card from left side so we gave transform-origin:left and next thing we want is it should be covering .projects-card in a time so we gave a time-duration but before hovering we want it to be invisible so we put scaleX(0) in normal specifying but in hover specification we put scaleX(1) so as scaleX() has been specified to ::before so now scaleX(0) means invisble like 0--->OFF and 1--->ON  */
+        /* scaleX is basically something which is used to make things expand in x-axis , if have used opacity:0 and :hover{ opacity:1; } we could not achieve what we want because opacity is comes out form entire body but whereas with scaleX we can make it to come from a particular direction */
+    }
+
+    .project-card:hover::before{
+        transform:scaleX(1);
+    }
+
+    .project-number{
+        position:absolute;
+        font-size:200px;
+        font-weight:600;
+        color:white;
+        z-index:5;
+        opacity:0;
+        /* display:none; */
+        /* transition: display 5s;  Not Working */
+    }
+    .project-card:hover .project-number{
+        /* display:block; */
+        opacity:1;
+        transition:opacity 0.7s;
+    } 
+
+    .project-number-right{
+        right:-40px;
+        top:-45px;
+    }
+
+    .project-number-left{
+        left:-40px;
+        top:-45px;
+    }
+
+    .project-content{
+        position:absolute;    /* because all the content div's elements are placed on the background image and so inorder ot make the elements overlap we make use of position:absolute; */
+        display:flex;
+        flex-direction: column; 
+        color:white;
+        
+        padding:2em;
+        bottom:20%;
+        z-index:5;
+
+        /* With bottom:20% the flex-items are brought on the background image but still they are below the blue tint because it's z-index is set to some +ve value with z-index the flex items are brought "on the" layer of blue tint */
+
+        gap:1em;
+        transition:all 0.4s;
+    }
+
+    .project-content-left{
+        left:10%;
+    }
+
+    .project-content-right{
+        right:10%;
+    }
+
+    .project-skills-container{
+        width:60%;
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+    }
+
+    .project-skill{
+
+        /* Changing the size of the skill icons */
+        width:40px; 
+    }
+
+    .project-heading{
+        font-size:50px;
+        font-weight:bold;
+        line-height:3rem;
+    }
+
+    .project-subheading{
+        width:70%;
+        font-size:16px;
+        font-style:italic;
+    }
+
+    .btn-group{
+        display:flex;
+        gap:0.9rem;
+        align-items:center;
+    }
+
+    .icon{
+        cursor: pointer;
+        color:white;
+        font-size:35px;
+
+        /* With color white the content's color i.e, icons color changes to white , and with font-size set to 35px icons size increases */
+
+        transition:color 0.4s;
+    }
+  
+    .icon:hover{
+        color:var(--bgorange);        
+    }
+
+    .project-card:hover .project-content{
+        transform:scale(1.1);
+    }
+
+    #project1{
+        background-image: url(images/projects/Project1.png);
+
+        /* We had given card width as 90% of 1200px so now 10% of 1200px is 120px */
+        
+    }
+
+    #project2{
+        margin-left:120px;
+        background-image: url(images/projects/Project2.png);
+    }
+
+    #project3{
+        
+        background-image: url(images/projects/Project3.png);
+        
+    }
+
+    #project4{
+        margin-left:120px;
+        background-image: url(images/projects/Project4.png);
+    }
+
+
+    /* Media queries here */
+
+    .skills-container{
+
+        /* This container has a width of 1200px (not specified here but still has , how?---->it has been given another class .container which already has width as 1200px that we have used for hero-section's container) */
+
+        position:relative;
+        display:flex;
+        padding:5rem;
+        margin:10rem auto;
+        gap:30px;
+    }
+
+    .skill-container-left{
+        width:50%;
+        display:flex;
+        flex-direction:column;
+    }
+
+    .skill-container-right{
+
+        width:50%;
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        position:relative;
+        /* Over this .skill-container-right element all the images were overlapped so we make .skill-container-right's position as absolute and make image's class as position:absolute; */
+        gap:2rem;
+    }
+
+
+
+
+
+
+    /* Answer for why width of 50% used here but not in .hero-section-left and .hero-section-right */
+    /* Here we can observe that .skill-container has been two child elements .skill-container-left and .skill-container-right which are given width of 50% each [ But while doing hero-section-left and hero-section-right of .hero-section we have not specified anything like this but still we get to observe that the two parts are created with nearly 50% width , there i.e, in hero-section-left and .hero-section-rightJohn Doe text is pulled down but where as the upper part is available for .hero-section-left and .hero-section-right so according to the contents inside them the space is distributed ] . But here we want to have a perfectly width of 50% each so we specify it */
+    
+
+
+
+
+
+    .skill-fade-text{
+        position:absolute;
+        user-select: none;
+        font-size:15em;
+        font-style:bold;
+        color: rgb(231, 231, 231);
+        bottom:-30%;
+        right:-12%;
+        
+        /* overflow-y: hidden; */
+    }
+
+    /* we can observe that without position:absolute to skill-gade-text the skills text is not placed at the bottom of the container because it hasn't got any boundary specified so when we do position as absolute it searches for relatiuvely marked nearest parent container and WRT it gets placed at the specified place  */
+
+    .blob-style{
+         position:absolute;
+         top:50%;
+         left:50%;
+         z-index:-5;
+         transform:translate(-50% , -50%); 
+         animation: blobAnimate 3s linear infinite;
+    }
+
+    @keyframes blobAnimate {
+        50%{
+            top:54%;
+            left:46%;
+        }        
+    }
+
+    .skills-logo{
+        width:90px;
+        transition:all 0.4s;
+    }
+
+    .skills-logo:hover{
+        transform:scale(1.2);
+    }
+
+    .skill-heading{
+        color:var(--bgorange);
+        font-size:50px;
+        font-style:bold;
+        line-height:50px;
+    }
+
+    .caps{
+        font-size:90px;
+    }
+
+    .skill-subHeading{
+        margin-top: 1rem;
+        width:85%;
+        text-align:justify;
+    }
+
+    .skill-subHeading>p{
+        margin:15px 0;
+        /* instead of adding br tag inbetween p tags we can use this configuration */
+    }
+
+    .contactus-form-container{
+        width:100%;
+        background-color:rgb(231, 231, 231);
+    }
+
+    .contactus-heading{
+        font-size:5em;
+        color:var(--bgorange);
+        padding-top: 2rem;
+    }
+
+    .contactus-subheading{
+        font-size:3rem;
+        color:#343d68aa;
+        /* text-transform:capitalize;   With this the all first letters of words in a scentence are capitalized , here no need of that because we have changed in html itselfwhile writing */
+    }
+
+    .contactus-form-container{
+        margin-top:25px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    /* .form{} */
+        /* width:100%; */
+        /* display:flex;
+        flex-direction:column;
+        gap:30px;
+        width:70%;
+        margin: 2rem 5rem; */
+    
+
+    /* -------> .form{
+        display:flex;
+        flex-direction:column;
+        gap:30px;
+        width:70%;
+        margin: 2rem 5rem;
+    }  */
+
+    /* .form-field-container{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:30px;
+        width:70%;
+        margin: 2rem 5rem;
+    } */
+
+    /*-------> .form-field-container{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:30px;
+        width:70%;
+        margin: 2rem 5rem;
+    } */
+
+    /* .formfield{
+        width:200%;
+        height:42px;
+        padding:0 2rem;
+        font-size:18px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 10px #1f1f1f;
+        font-weight:500;
+        border:none;
+        margin:17px;
+    } */
+
+    .form{
+        display:flex;
+        flex-direction:column;
+        gap:30px;
+        width:70%;
+        margin: 2rem 5rem;
+    }
+
+    .formfield-container{
+        width:100%;
+    }
+
+    .formfield{
+        width:100%;
+        height:42px;
+        padding:0 2rem;
+        font-size:18px;
+        border-radius:5px;
+        box-shadow: 2px 2px 10px #1f1f1f;
+        font-weight:500;
+        border:none;
+        margin-top:17px;
+    }
+
+    .formfield-textarea{
+        height:auto;
+        padding-top:1rem;
+    }
+
+    #submit-btn{
+        border:none;
+        font-size:1.4rem;
+        margin:1rem 0;
+    }
+
+    #submit-btn:hover{
+        scale:0.9;
+    }
+
+    .submit-icon{
+        padding:0 1rem;
+        font-size:1.5rem;
+    }
+
+    footer{
+        position:relative;
+        margin-top: -1px;
+        background-color: #343d68;
+        padding:5rem;
+    }
+
+    .footer-wrapper{
+        display:flex;
+        gap:1rem;
+        padding:1.2rem;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .footer-faded-text{
+        position:absolute;
+        left:0;
+        bottom:0;
+        color:#535c87;
+        user-select:none;
+        font-size:5em;
+    }
+
+    .link-wrapper{
+        display:flex;
+        gap:1.2rem;
+    }
+
+    .link-wrapper>div>a{
+        color:white;
+        transition:all 0.6s;
+    }
+
+    .link-wrapper>div>a:hover{
+        color:var(--bgorange);
+    }
+
+    .icon-wrapper{
+        display:flex;
+        gap:1rem;
+    }
+
+    
